@@ -1,0 +1,80 @@
+----------
+README
+----------
+
+IMPORTANT:  This script is "AS-IS" and is a reflection of a script that I have used 
+for the past few years. This is in no way a perfect script for upgrading every version
+of StatusNet but more of an outline to get you a starting point.
+
+For most standard instances, this script can work very efficiently for smaller
+communities and has a number of limitations due to a variety of platforms and 
+configurations that are possible. There are a number of things to keep in mind when
+running this script:
+
+1. This script DOES NOT backup or stop any running daemons so BACKUP, BACKUP, BACKUP!
+   (you have been warned!!!)
+
+2. READ the Upgrade section of the README on Status.Net's Gitorious site at:
+   http://gitorious.org/statusnet/mainline/blobs/master/README
+   
+3. Although the tail of this script does in fact start the daemons for things like
+   XMPP, Twitter Sync, etc, it does not stop them or kill any other dependants so 
+   that should be done prior to running the script.
+   
+4. I am not a programmer by trade, although do a fair amount on many platforms, I 
+   am hoping some in the community build and refine some of my methods here to 
+   improve the flexibility.
+   
+5. Remember there is probably a reason StatusNet doesn't bother with trying to push
+   out an upgrade tool since this is open and everyone, including myself, have 
+   customized the install with plugins, themes and other tweaks to make it fit our 
+   needs.
+
+
+
+Summary of functions
+====================
+
+This script will perform the following once you have backed up, shut down web access,
+and shut down all daemons running and writing to the site:
+
+1. Downloads the new StatusNet tarball specified
+
+2. Unpacks downloaded tarball
+
+3. Removes tarball once unpacked
+
+4. Copies all files necessary files from current instance (mublog folder)
+
+5. Gives proper access to all write folders (avatar, file, background)
+
+6. Stops daemons in scripts folder (/scripts/stopdaemons.sh)
+
+7. Renames the old instance to mublog-(instance number)
+
+8. Renames the new instance to mublog
+
+9. Renames the htaccess.sample to .htaccess and rewrites the correct base (currently
+   sets rewrite base to root '/')
+   
+10. Starts daemons back up (/scripts/startdaemons.sh)
+
+11. Notifies that StatusNet has been upgraded from old to new version.
+
+
+
+How to execute
+==============
+
+Currently it is run like any other script, make sure to make the script executable 
+and run in the format of:
+
+$./snupdate 0.9.7 0.9.6
+
+In the works
+============
+
+In order to add some flexibility to this script, I will be working on adding prompts
+for entering the versions (to and from) as well as specification for the install
+base folder and template paths.  This works pretty well for most "out of the box"
+installs.
