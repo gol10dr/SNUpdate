@@ -69,12 +69,15 @@ How to execute
 Currently it is run like any other script, make sure to make the script executable 
 and run in the format of:
 
-$./snupdate 0.9.7 0.9.6
+$./snupdate 
+
+The script will run and prompt you for the current version that is installed and the
+version you wish to install.  It will download and unpack the tarball and proceed with
+with above procedure.
 
 In the works
 ============
 
 In order to add some flexibility to this script, I will be working on adding prompts
-for entering the versions (to and from) as well as specification for the install
-base folder and template paths.  This works pretty well for most "out of the box"
-installs.
+for specification for the install including the base folder and template paths.  
+This works pretty well for most "out of the box" installs.
