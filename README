@@ -69,7 +69,7 @@ How to execute
 Currently it is run like any other script, make sure to make the script executable 
 and run in the format of:
 
-$./snupdate 
+$./snupdate.sh 
 
 The script will run and prompt you for the current version that is installed and the
 version you wish to install.  It will download and unpack the tarball and proceed with
